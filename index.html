@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Para Kéren 💕">
+
+    <!-- Open Graph para compartilhamento -->
+    <meta property="og:title" content="Para Kéren 💕">
+    <meta property="og:description" content="Uma surpresa especial de aniversário">
+    <meta property="og:type" content="website">
+
+    <title>Para Kéren 💕</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Tela de Loading -->
+    <div id="loader" class="loader">
+        <div class="loader-heart">💕</div>
+        <p class="loader-text">Preparando algo especial...</p>
+    </div>
+
+    <!-- Botão "Começar" após loading -->
+    <div id="start-screen" class="start-screen hidden">
+        <div class="start-particles" id="start-particles"></div>
+        <div class="start-content">
+            <p class="start-subtitle">Uma surpresa para você</p>
+            <h1 class="start-name">Kéren</h1>
+            <div class="start-heart-divider">
+                <span class="heart-line"></span>
+                <span class="heart-icon">♥</span>
+                <span class="heart-line"></span>
+            </div>
+            <button id="btn-start" class="btn-start">
+                <span>Abrir</span>
+                <svg class="btn-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- App Principal -->
+    <main id="app" class="app hidden">
+
+        <!-- Seção 1: Intro -->
+        <section id="intro" class="section section-intro">
+            <div class="intro-bg-gradient"></div>
+            <canvas id="particles-canvas" class="particles-canvas"></canvas>
+            <div class="section-content intro-content">
+                <p class="intro-pretext animate-on-scroll">Hoje é um dia especial...</p>
+                <h1 class="intro-name animate-on-scroll">Kéren</h1>
+                <div class="intro-glow"></div>
+                <p class="intro-date animate-on-scroll">15 de Março</p>
+                <div class="scroll-indicator">
+                    <span class="scroll-text">Deslize para baixo</span>
+                    <div class="scroll-arrow">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12l7 7 7-7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Galeria de Fotos -->
+        <section id="gallery" class="section section-gallery">
+            <div class="section-content">
+                <h2 class="section-title animate-on-scroll">Nossos Momentos</h2>
+                <p class="section-subtitle animate-on-scroll">Cada foto, uma história de amor</p>
+
+                <div class="gallery-container" id="gallery-container">
+                    <div class="gallery-track" id="gallery-track">
+                        <!-- As fotos serão carregadas dinamicamente -->
+                    </div>
+                    <div class="gallery-dots" id="gallery-dots"></div>
+                    <button class="gallery-nav gallery-prev" id="gallery-prev">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="gallery-nav gallery-next" id="gallery-next">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Carta de Amor -->
+        <section id="letter" class="section section-letter">
+            <div class="letter-bg-overlay"></div>
+            <div class="section-content">
+                <div class="letter-envelope animate-on-scroll" id="letter-envelope">
+                    <div class="envelope-icon">💌</div>
+                    <p class="envelope-text">Toque para abrir</p>
+                </div>
+                <div class="letter-paper hidden" id="letter-paper">
+                    <div class="letter-header">
+                        <span class="letter-date">15 de Março de 2026</span>
+                    </div>
+                    <div class="letter-body" id="letter-body">
+                        <!-- Texto será inserido via typewriter -->
+                    </div>
+                    <div class="letter-signature hidden" id="letter-signature">
+                        <p>Com todo meu amor,</p>
+                        <p class="signature-name">Eric 💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Trilha Sonora -->
+        <section id="music" class="section section-music">
+            <div class="section-content">
+                <h2 class="section-title animate-on-scroll">Nossa Trilha Sonora</h2>
+                <p class="section-subtitle animate-on-scroll">As músicas que embalam nosso amor</p>
+
+                <div class="music-visualizer animate-on-scroll" id="music-visualizer">
+                    <div class="visualizer-bars">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        <span class="bar"></span><span class="bar"></span>
+                    </div>
+                </div>
+
+                <div class="music-cards animate-on-scroll">
+                    <a href="https://open.spotify.com/search/Noite%20e%20Dia%20Jorge%20Mateus" target="_blank" class="music-card music-card-featured">
+                        <div class="music-card-icon">🎵</div>
+                        <div class="music-card-info">
+                            <span class="music-card-title">Noite e Dia</span>
+                            <span class="music-card-artist">Jorge & Mateus</span>
+                            <span class="music-card-badge">💕 Nossa música</span>
+                        </div>
+                        <div class="music-card-play">▶</div>
+                    </a>
+                    <a href="https://open.spotify.com/search/Girl%20on%20Fire%20Alicia%20Keys" target="_blank" class="music-card">
+                        <div class="music-card-icon">🔥</div>
+                        <div class="music-card-info">
+                            <span class="music-card-title">Girl on Fire</span>
+                            <span class="music-card-artist">Alicia Keys</span>
+                        </div>
+                        <div class="music-card-play">▶</div>
+                    </a>
+                    <a href="https://open.spotify.com/search/Beautiful%20Christina%20Aguilera" target="_blank" class="music-card">
+                        <div class="music-card-icon">💫</div>
+                        <div class="music-card-info">
+                            <span class="music-card-title">Beautiful</span>
+                            <span class="music-card-artist">Christina Aguilera</span>
+                        </div>
+                        <div class="music-card-play">▶</div>
+                    </a>
+                    <a href="https://open.spotify.com/search/A%20Thousand%20Years%20Christina%20Perri" target="_blank" class="music-card">
+                        <div class="music-card-icon">💕</div>
+                        <div class="music-card-info">
+                            <span class="music-card-title">A Thousand Years</span>
+                            <span class="music-card-artist">Christina Perri</span>
+                        </div>
+                        <div class="music-card-play">▶</div>
+                    </a>
+                    <a href="https://open.spotify.com/search/Run%20the%20World%20Girls%20Beyonce" target="_blank" class="music-card">
+                        <div class="music-card-icon">👑</div>
+                        <div class="music-card-info">
+                            <span class="music-card-title">Run the World (Girls)</span>
+                            <span class="music-card-artist">Beyoncé</span>
+                        </div>
+                        <div class="music-card-play">▶</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: Parabéns Final -->
+        <section id="birthday" class="section section-birthday">
+            <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+            <div class="section-content birthday-content">
+                <div class="birthday-cake animate-on-scroll">🎂</div>
+                <h2 class="birthday-title animate-on-scroll">Feliz Aniversário</h2>
+                <h1 class="birthday-name animate-on-scroll">Kéren!</h1>
+                <div class="birthday-hearts">
+                    <span>💕</span><span>✨</span><span>💕</span>
+                </div>
+                <p class="birthday-message animate-on-scroll">
+                    Que esse novo ano seja repleto de conquistas,
+                    sorrisos e muito amor. Você merece o mundo! 🌍
+                </p>
+                <div class="birthday-fireworks" id="birthday-fireworks"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/animations.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
