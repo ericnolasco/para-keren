@@ -28,15 +28,14 @@ class Gallery {
     loadPhotos() {
         // Configuração das fotos - legendas editáveis
         const photos = [
-            { src: 'fotos/foto1.jpg', caption: 'Nosso começo 💕' },
-            { src: 'fotos/foto2.jpg', caption: 'Momentos especiais ✨' },
-            { src: 'fotos/foto3.jpg', caption: 'Aventuras juntos 🌎' },
-            { src: 'fotos/foto4.jpg', caption: 'Risadas e amor 😄' },
-            { src: 'fotos/foto5.jpg', caption: 'Sempre juntos 💑' },
-            { src: 'fotos/foto6.jpg', caption: 'Meu amor 💕' },
-            { src: 'fotos/foto7.jpg', caption: 'Nós dois 🥰' },
-            { src: 'fotos/foto8.jpg', caption: 'Para sempre ♾️' },
-            { src: 'fotos/foto9.jpg', caption: 'Te amo 💕' },
+            { src: 'fotos/foto1.jpg', caption: '' },
+            { src: 'fotos/foto3.jpg', caption: '' },
+            { src: 'fotos/foto4.jpg', caption: '' },
+            { src: 'fotos/foto5.jpg', caption: '' },
+            { src: 'fotos/foto6.jpg', caption: '' },
+            { src: 'fotos/foto7.jpg', caption: '' },
+            { src: 'fotos/foto8.jpg', caption: '' },
+            { src: 'fotos/foto9.jpg', caption: '' },
         ];
 
         this.track.innerHTML = '';
